@@ -30,6 +30,8 @@ class _NavbarState extends State<Navbar> {
           ),
           const SizedBox(width: 40),
           InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             hoverColor: Colors.transparent,
             child: Text(
               'PROJECTS',

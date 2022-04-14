@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thaanu_portfolio/global_variables.dart' as globals;
+import 'package:thaanu_portfolio/sections/projects.dart';
 import 'package:thaanu_portfolio/widgets/navbar.dart';
 
 class Home extends StatefulWidget {
@@ -11,11 +12,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final ScrollController _scrollController = ScrollController();
-  double? height,
-      width,
-      projectsScale = 1,
-      projectsAlignment = 0,
-      projectsHeight;
+  double? height, width;
+  double _currectScrollPosition = 0;
+  List<double?> projectsHeight = [];
 
   @override
   void initState() {
@@ -25,7 +24,7 @@ class _HomeState extends State<Home> {
 
   scrollController() {
     _scrollController.addListener(() {
-      var _currectScrollPosition =
+      _currectScrollPosition =
           _scrollController.position.pixels; //this is the line
       // Home Section
       if (_currectScrollPosition <= 1500) {
@@ -46,27 +45,69 @@ class _HomeState extends State<Home> {
         });
       }
 
-      // Projects Section
-      if (_currectScrollPosition > 1800 && _currectScrollPosition <= 2600) {
+      // Projects Section - 1
+      if (_currectScrollPosition > 2000 && _currectScrollPosition <= 2800) {
         setState(() {
-          projectsHeight = MediaQuery.of(context).size.height -
-              (((_currectScrollPosition - 1800) / 800) *
+          projectsHeight[0] = MediaQuery.of(context).size.height -
+              (((_currectScrollPosition - 2000) / 800) *
                   MediaQuery.of(context).size.height);
-          // projectsScale = (1 - ((_currectScrollPosition - 1500) / 800) * 0.4);
-          // projectsAlignment = (0 - ((_currectScrollPosition - 1500) / 800) * 2);
         });
-      } else if (_currectScrollPosition > 2600) {
+      } else if (_currectScrollPosition > 2800 &&
+          _currectScrollPosition < 3200) {
         setState(() {
-          projectsHeight = 0;
+          projectsHeight[0] = 0;
         });
-        //   projectsScale = 0.6;
-        //   projectsAlignment = -1;
+      } else if (_currectScrollPosition > 3200 &&
+          _currectScrollPosition < 4000) {
+        setState(() {
+          projectsHeight[0] = -(((_currectScrollPosition - 3200) / 3200) *
+              MediaQuery.of(context).size.height);
+        });
       } else {
         setState(() {
-          projectsHeight = MediaQuery.of(context).size.height;
+          projectsHeight[0] = MediaQuery.of(context).size.height;
         });
-        //   projectsScale = 1;
-        //   projectsAlignment = 0;
+      }
+
+      // Projects Section - 2
+      if (_currectScrollPosition > 3200 && _currectScrollPosition <= 4000) {
+        setState(() {
+          projectsHeight[1] = MediaQuery.of(context).size.height -
+              (((_currectScrollPosition - 3200) / 800) *
+                  MediaQuery.of(context).size.height);
+        });
+      } else if (_currectScrollPosition > 4000 &&
+          _currectScrollPosition < 4400) {
+        setState(() {
+          projectsHeight[1] = 0;
+        });
+      } else if (_currectScrollPosition > 4400 &&
+          _currectScrollPosition < 5200) {
+        setState(() {
+          projectsHeight[1] = -(((_currectScrollPosition - 4400) / 3200) *
+              MediaQuery.of(context).size.height);
+        });
+      } else {
+        setState(() {
+          projectsHeight[1] = MediaQuery.of(context).size.height;
+        });
+      }
+
+      // Projects Section - 3
+      if (_currectScrollPosition > 4400 && _currectScrollPosition <= 5200) {
+        setState(() {
+          projectsHeight[2] = MediaQuery.of(context).size.height -
+              (((_currectScrollPosition - 4400) / 800) *
+                  MediaQuery.of(context).size.height);
+        });
+      } else if (_currectScrollPosition > 5200) {
+        setState(() {
+          projectsHeight[2] = 0;
+        });
+      } else {
+        setState(() {
+          projectsHeight[2] = MediaQuery.of(context).size.height;
+        });
       }
     });
   }
@@ -76,72 +117,22 @@ class _HomeState extends State<Home> {
     if (width == null || height == null) {
       height = MediaQuery.of(context).size.height * 0.5;
       width = MediaQuery.of(context).size.width * 0.7;
-      projectsHeight = MediaQuery.of(context).size.height;
+      projectsHeight.addAll([
+        MediaQuery.of(context).size.height,
+        MediaQuery.of(context).size.height,
+        MediaQuery.of(context).size.height
+      ]);
     }
 
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Positioned.fill(
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
-              alignment: Alignment(0, projectsAlignment!),
-              child: AnimatedScale(
-                duration: const Duration(milliseconds: 100),
-                scale: projectsScale!,
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Text(
-                        'Projects',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 80,
-                          fontWeight: FontWeight.w700,
-                          color: globals.mainColor,
-                        ),
-                      ),
-                    ),
-                    Positioned.fill(
-                      child: Container(
-                        alignment: Alignment.bottomRight,
-                        margin: const EdgeInsets.only(
-                          bottom: 8,
-                        ),
-                        child: Image.asset(
-                          'lib/assets/images/cursor.png',
-                          height: 35,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          Projects(
+            projectsHeight: projectsHeight,
+            currectScrollPosition: _currectScrollPosition,
           ),
-          Positioned(
-            top: projectsHeight,
-            child: Align(
-              alignment: const Alignment(-1, -2),
-              child: Row(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height,
-                    color: Colors.grey[100],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          
           AnimatedOpacity(
             duration: const Duration(milliseconds: 100),
             opacity: (height == 0) ? 0 : 1,
@@ -323,8 +314,9 @@ class _HomeState extends State<Home> {
             controller: _scrollController,
             child: SingleChildScrollView(
               controller: _scrollController,
+              physics: const ClampingScrollPhysics(),
               child: SizedBox(
-                height: 5000,
+                height: 7000,
                 width: MediaQuery.of(context).size.width,
               ),
             ),
@@ -335,7 +327,7 @@ class _HomeState extends State<Home> {
                 opacity: (height == 0) ? 0 : 1,
                 child: Navbar(
                   projectsOnTap: () {
-                    _scrollController.animateTo(2600,
+                    _scrollController.animateTo(2000,
                         duration: const Duration(seconds: 1),
                         curve: Curves.easeIn);
                   },
