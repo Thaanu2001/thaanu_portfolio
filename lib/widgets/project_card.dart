@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thaanu_portfolio/global_variables.dart';
 
 class ProjectCard extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class ProjectCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.5,
       height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.fromLTRB(100, 60, 100, 60),
-      color: (isDark) ? Colors.black : Colors.white,
+      color: (isDark) ? mainColor : Colors.white,
       child: Column(
         children: [
           FittedBox(

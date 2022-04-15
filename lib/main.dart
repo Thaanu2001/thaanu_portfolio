@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thaanu_portfolio/scroll_stack.dart';
 import 'package:thaanu_portfolio/sections/home.dart';
 
 void main() {
@@ -12,8 +13,9 @@ class ThaanuPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: const Home(),
+      home: const ScrollStack(),
     );
   }
 }

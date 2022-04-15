@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:thaanu_portfolio/global_variables.dart' as globals;
 
 class Navbar extends StatefulWidget {
-  final Function projectsOnTap;
-  const Navbar({Key? key, required this.projectsOnTap}) : super(key: key);
+  final Function projectsOnTap, portfolioOnTap;
+  const Navbar(
+      {Key? key, required this.projectsOnTap, required this.portfolioOnTap})
+      : super(key: key);
 
   @override
   State<Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
-  bool projectsOnHover = false;
+  bool projectsOnHover = false, portfolioOnHover = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +53,26 @@ class _NavbarState extends State<Navbar> {
             },
           ),
           const SizedBox(width: 40),
-          const Text(
-            'PORTFOLIO',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
+          InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            child: Text(
+              'PORTFOLIO',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: (portfolioOnHover) ? globals.mainColor : Colors.black,
+              ),
             ),
+            onTap: () => widget.portfolioOnTap(),
+            onHover: (val) {
+              if (val) {
+                setState(() => portfolioOnHover = true);
+              } else {
+                setState(() => portfolioOnHover = false);
+              }
+            },
           ),
           const SizedBox(width: 40),
           const Text(

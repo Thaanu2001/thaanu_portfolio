@@ -100,30 +100,31 @@ class Projects extends StatelessWidget {
               ),
             ),
           ),
-        Positioned(
-          top: projectsHeight[2],
-          child: Align(
-            alignment: const Alignment(-1, -2),
-            child: Row(
-              children: const [
-                ProjectCard(
-                  title: 'Wolff Architects UI',
-                  description:
-                      'Wolff Architects are a design lead architectural practice located in Notting Hill, West London. I designed the user interface for their official website.',
-                  image: 'lib/assets/images/wolff_img.jpg',
-                  isDark: true,
-                ),
-                ProjectCard(
-                  title: 'Axis Store Mobile App',
-                  description:
-                      'This application is a simple eCommerce mobile app that has been developed using the Flutter framework for a US-based company called Owan Global LLC.',
-                  image: 'lib/assets/images/axis_img.jpg',
-                  isDark: false,
-                ),
-              ],
+        if (currectScrollPosition < 6400)
+          Positioned(
+            top: projectsHeight[2],
+            child: Align(
+              alignment: const Alignment(-1, -2),
+              child: Row(
+                children: const [
+                  ProjectCard(
+                    title: 'Wolff Architects UI',
+                    description:
+                        'Wolff Architects are a design lead architectural practice located in Notting Hill, West London. I designed the user interface for their official website.',
+                    image: 'lib/assets/images/wolff_img.jpg',
+                    isDark: true,
+                  ),
+                  ProjectCard(
+                    title: 'Axis Store Mobile App',
+                    description:
+                        'This application is a simple eCommerce mobile app that has been developed using the Flutter framework for a US-based company called Owan Global LLC.',
+                    image: 'lib/assets/images/axis_img.jpg',
+                    isDark: false,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
       ],
     );
   }
