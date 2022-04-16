@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thaanu_portfolio/sections/home.dart';
+import 'package:thaanu_portfolio/sections/letstalk.dart';
 import 'package:thaanu_portfolio/sections/portfolio.dart';
 import 'package:thaanu_portfolio/sections/projects.dart';
 import 'package:thaanu_portfolio/widgets/navbar.dart';
@@ -13,9 +14,9 @@ class ScrollStack extends StatefulWidget {
 
 class _ScrollStackState extends State<ScrollStack> {
   final ScrollController _scrollController = ScrollController();
-  double? height, width;
-  double _currectScrollPosition = 0, portfolioScale = 0;
-  List<double?> projectsHeight = [], portfolioHeight = [];
+  double? height, width, portfolioHeight;
+  double _currectScrollPosition = 0, portfolioScale = 0, experienceScale = 1;
+  List<double?> projectsHeight = [], experienceHeight = [];
 
   @override
   void initState() {
@@ -121,21 +122,21 @@ class _ScrollStackState extends State<ScrollStack> {
       // Portfolio Title
       if (_currectScrollPosition > 5600 && _currectScrollPosition <= 6400) {
         setState(() {
-          portfolioHeight[0] = MediaQuery.of(context).size.height -
+          portfolioHeight = MediaQuery.of(context).size.height -
               (((_currectScrollPosition - 5600) / 800) *
                   MediaQuery.of(context).size.height);
         });
       } else if (_currectScrollPosition > 6400) {
         setState(() {
-          portfolioHeight[0] = 0;
+          portfolioHeight = 0;
         });
       } else {
         setState(() {
-          portfolioHeight[0] = MediaQuery.of(context).size.height;
+          portfolioHeight = MediaQuery.of(context).size.height;
         });
       }
 
-      // Portfolio Title
+      // Portfolio Content
       if (_currectScrollPosition > 6800 && _currectScrollPosition <= 7600) {
         setState(() {
           portfolioScale = ((_currectScrollPosition - 6800) / 800);
@@ -147,6 +148,56 @@ class _ScrollStackState extends State<ScrollStack> {
       } else {
         setState(() {
           portfolioScale = 0;
+        });
+      }
+
+      // Experience Title - Reveal
+      if (_currectScrollPosition > 8200 && _currectScrollPosition <= 9000) {
+        setState(() {
+          experienceHeight[0] = MediaQuery.of(context).size.height -
+              (((_currectScrollPosition - 8200) / 800) *
+                  MediaQuery.of(context).size.height);
+        });
+      } else if (_currectScrollPosition > 9000) {
+        setState(() {
+          experienceHeight[0] = 0;
+        });
+      } else {
+        setState(() {
+          experienceHeight[0] = MediaQuery.of(context).size.height;
+        });
+      }
+
+      // Experience Title - Expand
+      if (_currectScrollPosition > 9200 &&
+          _currectScrollPosition <= 10000 &&
+          ((_currectScrollPosition - 9200) / 800) * 10 > 1) {
+        setState(() {
+          experienceScale = ((_currectScrollPosition - 9200) / 800) * 10;
+        });
+      } else if (_currectScrollPosition > 10000) {
+        setState(() {
+          experienceScale = 10;
+        });
+      } else {
+        setState(() {
+          experienceScale = 1;
+        });
+      }
+
+      // Experience Title - Center Box
+      if (_currectScrollPosition > 9600 && _currectScrollPosition <= 10400) {
+        setState(() {
+          experienceHeight[1] = (((_currectScrollPosition - 9600) / 800) *
+              MediaQuery.of(context).size.height);
+        });
+      } else if (_currectScrollPosition > 10400) {
+        setState(() {
+          experienceHeight[1] = MediaQuery.of(context).size.height;
+        });
+      } else {
+        setState(() {
+          experienceHeight[1] = 0;
         });
       }
     });
@@ -162,7 +213,12 @@ class _ScrollStackState extends State<ScrollStack> {
         MediaQuery.of(context).size.height,
         MediaQuery.of(context).size.height
       ]);
-      portfolioHeight.add(MediaQuery.of(context).size.height);
+      portfolioHeight = MediaQuery.of(context).size.height;
+      experienceHeight.addAll([
+        MediaQuery.of(context).size.height,
+        0,
+        MediaQuery.of(context).size.height
+      ]);
     }
 
     return Scaffold(
@@ -172,7 +228,7 @@ class _ScrollStackState extends State<ScrollStack> {
           slivers: [
             SliverAppBar(
               toolbarHeight: MediaQuery.of(context).size.height,
-              expandedHeight: 10000,
+              expandedHeight: 11500,
               backgroundColor: Colors.white,
               flexibleSpace: LayoutBuilder(
                 builder: (context, constraints) {
@@ -186,9 +242,12 @@ class _ScrollStackState extends State<ScrollStack> {
                           currectScrollPosition: _currectScrollPosition,
                         ),
                         Portfolio(
-                          portfolioHeight: portfolioHeight,
+                          portfolioHeight: portfolioHeight!,
                           portfolioScale: portfolioScale,
                         ),
+                        LetsTalk(
+                            letsTalkHeight: experienceHeight,
+                            letsTalkScale: experienceScale),
                         Home(
                           width: width!,
                           height: height!,
@@ -206,6 +265,12 @@ class _ScrollStackState extends State<ScrollStack> {
                               portfolioOnTap: () {
                                 _scrollController.animateTo(6400,
                                     duration: const Duration(seconds: 1),
+                                    curve: Curves.easeIn);
+                              },
+                              talkOnTap: () {
+                                _scrollController.animateTo(9200,
+                                    duration:
+                                        const Duration(milliseconds: 1200),
                                     curve: Curves.easeIn);
                               },
                             ),

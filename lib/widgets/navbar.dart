@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:thaanu_portfolio/global_variables.dart' as globals;
 
 class Navbar extends StatefulWidget {
-  final Function projectsOnTap, portfolioOnTap;
+  final Function projectsOnTap, portfolioOnTap, talkOnTap;
   const Navbar(
-      {Key? key, required this.projectsOnTap, required this.portfolioOnTap})
+      {Key? key,
+      required this.projectsOnTap,
+      required this.portfolioOnTap,
+      required this.talkOnTap})
       : super(key: key);
 
   @override
@@ -12,7 +15,7 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  bool projectsOnHover = false, portfolioOnHover = false;
+  bool projectsOnHover = false, portfolioOnHover = false, talkOnHover = false;
 
   @override
   Widget build(BuildContext context) {
@@ -75,20 +78,26 @@ class _NavbarState extends State<Navbar> {
             },
           ),
           const SizedBox(width: 40),
-          const Text(
-            'EXPERIENCE',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
+          InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            child: Text(
+              'LET\'S TALK',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: (talkOnHover) ? globals.mainColor : Colors.black,
+              ),
             ),
-          ),
-          const SizedBox(width: 40),
-          const Text(
-            'LET\'S TALK',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
+            onTap: () => widget.talkOnTap(),
+            onHover: (val) {
+              if (val) {
+                setState(() => talkOnHover = true);
+              } else {
+                setState(() => talkOnHover = false);
+              }
+            },
           ),
         ],
       ),

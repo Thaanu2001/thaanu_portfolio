@@ -6,7 +6,7 @@ import 'package:thaanu_portfolio/global_variables.dart' as globals;
 
 class Portfolio extends StatefulWidget {
   final double portfolioScale;
-  final List<double?> portfolioHeight;
+  final double portfolioHeight;
   const Portfolio(
       {Key? key,
       required this.portfolioScale,
@@ -25,7 +25,7 @@ class _PortfolioState extends State<Portfolio> {
     return Stack(
       children: [
         Positioned(
-          top: widget.portfolioHeight[0],
+          top: widget.portfolioHeight,
           child: Container(
             alignment: Alignment.center,
             height: MediaQuery.of(context).size.height,
@@ -77,7 +77,6 @@ class _PortfolioState extends State<Portfolio> {
                       padding: const EdgeInsets.all(40),
                       margin: const EdgeInsets.all(4),
                       height: MediaQuery.of(context).size.height,
-                      // width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2,
