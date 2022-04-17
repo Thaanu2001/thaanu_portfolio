@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:thaanu_portfolio/global_variables.dart' as globals;
+import 'dart:js' as js;
 
 class LetsTalk extends StatelessWidget {
   final List<double?> letsTalkHeight;
@@ -150,6 +152,144 @@ class LetsTalk extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center,
                       ),
+                      const SizedBox(height: 30),
+                      Row(
+                        children: [
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.linkedinIn,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod('open', [
+                                'https://www.linkedin.com/in/thaanu-perera-0a84b9194'
+                              ]);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.behance,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod('open',
+                                  ['https://www.behance.net/thaanuperera']);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.github,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod(
+                                  'open', ['https://github.com/Thaanu2001']);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.dribbble,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod(
+                                  'open', ['https://dribbble.com/thaanuP']);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.twitter,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod(
+                                  'open', ['https://twitter.com/ThaanuPerera']);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.facebook,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod('open',
+                                  ['https://www.facebook.com/thaanu.perera']);
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          InkWell(
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: globals.mainColor,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: const Icon(
+                                FontAwesomeIcons.instagram,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                            onTap: () {
+                              js.context.callMethod('open',
+                                  ['https://www.instagram.com/_thaxnu_']);
+                            },
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
