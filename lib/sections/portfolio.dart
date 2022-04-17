@@ -8,9 +8,7 @@ class Portfolio extends StatefulWidget {
   final double portfolioScale;
   final double portfolioHeight;
   const Portfolio(
-      {Key? key,
-      required this.portfolioScale,
-      required this.portfolioHeight})
+      {Key? key, required this.portfolioScale, required this.portfolioHeight})
       : super(key: key);
 
   @override
@@ -95,9 +93,7 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[0])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[0]) ? 1.04 : 1,
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-1.gif',
                                         fit: BoxFit.cover,
@@ -106,11 +102,11 @@ class _PortfolioState extends State<Portfolio> {
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[0] = true);
+                                        setState(
+                                            () => portfolioOnHover[0] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[0] = false);
+                                        setState(
+                                            () => portfolioOnHover[0] = false);
                                       }
                                     },
                                     onTap: () {
@@ -127,9 +123,7 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[1])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[1]) ? 1.04 : 1,
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-2.gif',
                                         fit: BoxFit.cover,
@@ -138,11 +132,11 @@ class _PortfolioState extends State<Portfolio> {
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[1] = true);
+                                        setState(
+                                            () => portfolioOnHover[1] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[1] = false);
+                                        setState(
+                                            () => portfolioOnHover[1] = false);
                                       }
                                     },
                                     onTap: () {
@@ -159,22 +153,21 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[2])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[2]) ? 1.04 : 1,
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-3.jpg',
                                         fit: BoxFit.cover,
+                                        height: double.infinity,
                                         alignment: Alignment.topCenter,
                                       ),
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[2] = true);
+                                        setState(
+                                            () => portfolioOnHover[2] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[2] = false);
+                                        setState(
+                                            () => portfolioOnHover[2] = false);
                                       }
                                     },
                                     onTap: () {
@@ -197,9 +190,7 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[3])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[3]) ? 1.04 : 1,
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-4.jpg',
                                         fit: BoxFit.cover,
@@ -208,11 +199,11 @@ class _PortfolioState extends State<Portfolio> {
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[3] = true);
+                                        setState(
+                                            () => portfolioOnHover[3] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[3] = false);
+                                        setState(
+                                            () => portfolioOnHover[3] = false);
                                       }
                                     },
                                     onTap: () {
@@ -229,9 +220,7 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[4])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[4]) ? 1.04 : 1,
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-5.jpg',
                                         fit: BoxFit.cover,
@@ -240,11 +229,11 @@ class _PortfolioState extends State<Portfolio> {
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[4] = true);
+                                        setState(
+                                            () => portfolioOnHover[4] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[4] = false);
+                                        setState(
+                                            () => portfolioOnHover[4] = false);
                                       }
                                     },
                                     onTap: () {
@@ -261,27 +250,25 @@ class _PortfolioState extends State<Portfolio> {
                                     child: AnimatedScale(
                                       duration:
                                           const Duration(milliseconds: 200),
-                                      scale: (portfolioOnHover[5])
-                                          ? 1.04
-                                          : 1,
+                                      scale: (portfolioOnHover[5]) ? 1.04 : 1,
                                       child: Image.asset(
-                                        'lib/assets/images/portfolio/image-3.jpg',
+                                        'lib/assets/images/portfolio/image-6.jpg',
                                         fit: BoxFit.cover,
                                         alignment: Alignment.topCenter,
                                       ),
                                     ),
                                     onHover: (val) {
                                       if (val) {
-                                        setState(() =>
-                                            portfolioOnHover[5] = true);
+                                        setState(
+                                            () => portfolioOnHover[5] = true);
                                       } else {
-                                        setState(() =>
-                                            portfolioOnHover[5] = false);
+                                        setState(
+                                            () => portfolioOnHover[5] = false);
                                       }
                                     },
                                     onTap: () {
                                       js.context.callMethod('open', [
-                                        'https://stackoverflow.com/questions/ask'
+                                        'https://www.behance.net/gallery/106907037/Mobile-Banking-Application-Concept'
                                       ]);
                                     },
                                   ),
