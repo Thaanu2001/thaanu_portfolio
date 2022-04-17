@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:thaanu_portfolio/scroll_stack.dart';
-import 'package:thaanu_portfolio/sections/home.dart';
 
 void main() {
   runApp(const ThaanuPortfolio());
@@ -13,6 +12,7 @@ class ThaanuPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Thaanu Perera - UI UX Designer",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
       home: const ScrollStack(),
