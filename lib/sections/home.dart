@@ -43,44 +43,50 @@ class Home extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.all(60),
                           width: MediaQuery.of(context).size.width * 0.7,
-                          height: MediaQuery.of(context).size.height * 0.5,
+                          height: MediaQuery.of(context).size.height * 0.6,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              RichText(
-                                text: TextSpan(
-                                  text: 'Hello there,\n',
-                                  children: [
-                                    const TextSpan(text: 'I\'m '),
-                                    TextSpan(
-                                      text: 'Thaanu Perera',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: globals.mainColor,
-                                        fontSize: 80,
-                                        fontWeight: FontWeight.w700,
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'Hello there,\n',
+                                    children: [
+                                      const TextSpan(text: 'I\'m '),
+                                      TextSpan(
+                                        text: 'Thaanu Perera',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: globals.mainColor,
+                                          fontSize: 80,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
+                                    ],
+                                    style: const TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 80,
+                                      fontWeight: FontWeight.w700,
+                                      height: 1.1,
                                     ),
-                                  ],
-                                  style: const TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 80,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.1,
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 20),
-                              const Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.w300,
+                              const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'I\'m a UI UX designer based in Sri Lanka who loves to create\nsimple designs that inspires people... and I do\nmobile application development as well',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
                               )
                             ],
                           ),

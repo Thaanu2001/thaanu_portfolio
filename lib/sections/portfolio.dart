@@ -157,7 +157,6 @@ class _PortfolioState extends State<Portfolio> {
                                       child: Image.asset(
                                         'lib/assets/images/portfolio/image-3.jpg',
                                         fit: BoxFit.cover,
-                                        height: double.infinity,
                                         alignment: Alignment.topCenter,
                                       ),
                                     ),
