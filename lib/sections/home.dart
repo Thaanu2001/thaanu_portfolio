@@ -41,53 +41,109 @@ class Home extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         reverse: true,
                         child: Container(
-                          padding: const EdgeInsets.all(60),
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          height: MediaQuery.of(context).size.height * 0.6,
+                          padding: EdgeInsets.all(
+                              ((MediaQuery.of(context).size.width > 576)
+                                  ? 60
+                                  : 30)),
+                          width: MediaQuery.of(context).size.width *
+                              ((MediaQuery.of(context).size.width > 768)
+                                  ? 0.7
+                                  : 0.9),
+                          height: MediaQuery.of(context).size.height *
+                              ((MediaQuery.of(context).size.width > 576)
+                                  ? 0.6
+                                  : 0.8),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: RichText(
-                                  text: TextSpan(
-                                    text: 'Hello there,\n',
-                                    children: [
-                                      const TextSpan(text: 'I\'m '),
-                                      TextSpan(
-                                        text: 'Thaanu Perera',
+                              (MediaQuery.of(context).size.width > 576)
+                                  ? FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: RichText(
+                                        text: TextSpan(
+                                          text: 'Hello there,\n',
+                                          children: [
+                                            const TextSpan(text: 'I\'m '),
+                                            TextSpan(
+                                              text: 'Thaanu Perera',
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: globals.mainColor,
+                                                fontSize: 80,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ],
+                                          style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 80,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.1,
+                                          ),
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
+                                  : FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: RichText(
+                                        text: TextSpan(
+                                          text: 'Hello there,\n',
+                                          children: [
+                                            const TextSpan(text: 'I\'m\n'),
+                                            TextSpan(
+                                              text: 'Thaanu Perera',
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: globals.mainColor,
+                                                fontSize: 80,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ],
+                                          style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 80,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.1,
+                                          ),
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                              const SizedBox(height: 20),
+                              (MediaQuery.of(context).size.width > 576)
+                                  ? FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        'I\'m a UI UX designer based in Sri Lanka who loves to create\nsimple designs that inspires people...\nand I do mobile application development as well.',
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: globals.mainColor,
-                                          fontSize: 80,
-                                          fontWeight: FontWeight.w700,
+                                          fontSize: ((MediaQuery.of(context)
+                                                      .size
+                                                      .width >
+                                                  576)
+                                              ? 26
+                                              : 20),
+                                          fontWeight: FontWeight.w300,
                                         ),
+                                        textAlign: TextAlign.center,
                                       ),
-                                    ],
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 80,
-                                      fontWeight: FontWeight.w700,
-                                      height: 1.1,
-                                    ),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              const FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  'I\'m a UI UX designer based in Sri Lanka who loves to create\nsimple designs that inspires people... and I do\nmobile application development as well',
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
+                                    )
+                                  : SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: const Text(
+                                        'I\'m a UI UX designer based in Sri Lanka who loves to create simple designs that inspires people... and I do mobile application development as well.',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
                             ],
                           ),
                         ),

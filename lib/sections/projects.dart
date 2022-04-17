@@ -28,7 +28,8 @@ class Projects extends StatelessWidget {
                       'Projects',
                       style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 80,
+                        fontSize:
+                            (MediaQuery.of(context).size.width > 576) ? 80 : 54,
                         fontWeight: FontWeight.w700,
                         color: globals.mainColor,
                       ),
@@ -51,77 +52,161 @@ class Projects extends StatelessWidget {
             ),
           ),
         if (currectScrollPosition < 4000)
-          Positioned(
-            top: projectsHeight[0],
-            child: Align(
-              alignment: const Alignment(-1, -2),
-              child: Row(
-                children: const [
-                  ProjectCard(
-                    title: 'Nolimit Mobile UI',
-                    description:
-                        'NOLIMIT is a leading retail fashion chain in Sri Lanka. This UI is designed for their mobile application and website mobile view.',
-                    image: 'lib/assets/images/nolimit_img.jpg',
-                    isDark: true,
+          (MediaQuery.of(context).size.width > 768)
+              ? Positioned(
+                  top: projectsHeight[0],
+                  child: Align(
+                    alignment: const Alignment(-1, -2),
+                    child: Row(
+                      children: const [
+                        ProjectCard(
+                          title: 'Nolimit Mobile UI',
+                          description:
+                              'NOLIMIT is a leading retail fashion chain in Sri Lanka. This UI is designed for their mobile application and website mobile view.',
+                          image: 'lib/assets/images/nolimit_img.jpg',
+                          isDark: true,
+                        ),
+                        ProjectCard(
+                          title: 'SneakersAlert Mobile App',
+                          description:
+                              'SneakersAlert is a Netherlands based e-commerce sneakers shop. I developed their mobile application using Flutter cross-platform development.',
+                          image: 'lib/assets/images/sneakersalert_img.jpg',
+                          isDark: false,
+                        ),
+                      ],
+                    ),
                   ),
-                  ProjectCard(
-                    title: 'SneakersAlert Mobile App',
-                    description:
-                        'SneakersAlert is a Netherlands based e-commerce sneakers shop. I developed their mobile application using Flutter cross-platform development.',
-                    image: 'lib/assets/images/sneakersalert_img.jpg',
-                    isDark: false,
+                )
+              : Positioned(
+                  top: projectsHeight[0],
+                  child: const Align(
+                    alignment: Alignment(-1, -2),
+                    child: ProjectCard(
+                      title: 'Nolimit Mobile UI',
+                      description:
+                          'NOLIMIT is a leading retail fashion chain in Sri Lanka. This UI is designed for their mobile application and website mobile view.',
+                      image: 'lib/assets/images/nolimit_img.jpg',
+                      isDark: true,
+                    ),
                   ),
-                ],
-              ),
-            ),
-          ),
+                ),
         if (currectScrollPosition < 5200)
+          (MediaQuery.of(context).size.width > 768)
+              ? Positioned(
+                  top: projectsHeight[1],
+                  child: Align(
+                    alignment: const Alignment(-1, -2),
+                    child: Row(
+                      children: const [
+                        ProjectCard(
+                          title: 'Canny Mobile App',
+                          description:
+                              'Canny is a US-based company which lets users to get nearest deals. I developed their mobile application using Flutter framework to support both iOS and Android platforms.',
+                          image: 'lib/assets/images/canny_img.jpg',
+                          isDark: false,
+                        ),
+                        ProjectCard(
+                          title: 'SLSC Website UI',
+                          description:
+                              'Sri Lanka Shipping Company Limited has been at the forefront of the Shipping and Maritime Industry. I designed the user interface for their official website.',
+                          image: 'lib/assets/images/slsc_img.jpg',
+                          isDark: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Positioned(
+                  top: projectsHeight[1],
+                  child: const Align(
+                    alignment: Alignment(-1, -2),
+                    child: ProjectCard(
+                      title: 'SneakersAlert Mobile App',
+                      description:
+                          'SneakersAlert is a Netherlands based e-commerce sneakers shop. I developed their mobile application using Flutter cross-platform development.',
+                      image: 'lib/assets/images/sneakersalert_img.jpg',
+                      isDark: false,
+                    ),
+                  ),
+                ),
+        if (currectScrollPosition < 6400)
+          (MediaQuery.of(context).size.width > 768)
+              ? Positioned(
+                  top: projectsHeight[2],
+                  child: Align(
+                    alignment: const Alignment(-1, -2),
+                    child: Row(
+                      children: const [
+                        ProjectCard(
+                          title: 'Wolff Architects UI',
+                          description:
+                              'Wolff Architects are a design lead architectural practice located in Notting Hill, West London. I designed the user interface for their official website.',
+                          image: 'lib/assets/images/wolff_img.jpg',
+                          isDark: true,
+                        ),
+                        ProjectCard(
+                          title: 'Axis Store Mobile App',
+                          description:
+                              'This application is a simple eCommerce mobile app that has been developed using the Flutter framework for a US-based company called Owan Global LLC.',
+                          image: 'lib/assets/images/axis_img.jpg',
+                          isDark: false,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Positioned(
+                  top: projectsHeight[2],
+                  child: const Align(
+                    alignment: Alignment(-1, -2),
+                    child: ProjectCard(
+                      title: 'Canny Mobile App',
+                      description:
+                          'Canny is a US-based company which lets users to get nearest deals. I developed their mobile application using Flutter framework to support both iOS and Android platforms.',
+                      image: 'lib/assets/images/canny_img.jpg',
+                      isDark: true,
+                    ),
+                  ),
+                ),
+        if (MediaQuery.of(context).size.width < 768)
           Positioned(
-            top: projectsHeight[1],
-            child: Align(
-              alignment: const Alignment(-1, -2),
-              child: Row(
-                children: const [
-                  ProjectCard(
-                    title: 'Canny Mobile App',
-                    description:
-                        'Canny is a US-based company which lets users to get nearest deals. I developed their mobile application using Flutter framework to support both iOS and Android platforms.',
-                    image: 'lib/assets/images/canny_img.jpg',
-                    isDark: false,
-                  ),
-                  ProjectCard(
-                    title: 'SLSC Website UI',
-                    description:
-                        'Sri Lanka Shipping Company Limited has been at the forefront of the Shipping and Maritime Industry. I designed the user interface for their official website.',
-                    image: 'lib/assets/images/slsc_img.jpg',
-                    isDark: true,
-                  ),
-                ],
+            top: projectsHeight[3],
+            child: const Align(
+              alignment: Alignment(-1, -2),
+              child: ProjectCard(
+                title: 'SLSC Website UI',
+                description:
+                    'Sri Lanka Shipping Company Limited has been at the forefront of the Shipping and Maritime Industry. I designed the user interface for their official website.',
+                image: 'lib/assets/images/slsc_img.jpg',
+                isDark: false,
               ),
             ),
           ),
-        if (currectScrollPosition < 6400)
+        if (MediaQuery.of(context).size.width < 768)
           Positioned(
-            top: projectsHeight[2],
-            child: Align(
-              alignment: const Alignment(-1, -2),
-              child: Row(
-                children: const [
-                  ProjectCard(
-                    title: 'Wolff Architects UI',
-                    description:
-                        'Wolff Architects are a design lead architectural practice located in Notting Hill, West London. I designed the user interface for their official website.',
-                    image: 'lib/assets/images/wolff_img.jpg',
-                    isDark: true,
-                  ),
-                  ProjectCard(
-                    title: 'Axis Store Mobile App',
-                    description:
-                        'This application is a simple eCommerce mobile app that has been developed using the Flutter framework for a US-based company called Owan Global LLC.',
-                    image: 'lib/assets/images/axis_img.jpg',
-                    isDark: false,
-                  ),
-                ],
+            top: projectsHeight[4],
+            child: const Align(
+              alignment: Alignment(-1, -2),
+              child: ProjectCard(
+                title: 'Wolff Architects UI',
+                description:
+                    'Wolff Architects are a design lead architectural practice located in Notting Hill, West London. I designed the user interface for their official website.',
+                image: 'lib/assets/images/wolff_img.jpg',
+                isDark: true,
+              ),
+            ),
+          ),
+        if (MediaQuery.of(context).size.width < 768)
+          Positioned(
+            top: projectsHeight[5],
+            child: const Align(
+              alignment: Alignment(-1, -2),
+              child: ProjectCard(
+                title: 'Axis Store Mobile App',
+                description:
+                    'This application is a simple eCommerce mobile app that has been developed using the Flutter framework for a US-based company called Owan Global LLC.',
+                image: 'lib/assets/images/axis_img.jpg',
+                isDark: false,
               ),
             ),
           ),

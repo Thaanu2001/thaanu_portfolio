@@ -46,11 +46,13 @@ class LetsTalk extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: const Text(
+                      child: Text(
                         'Let\'s Talk',
                         style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 80,
+                          fontSize: (MediaQuery.of(context).size.width > 576)
+                              ? 80
+                              : 54,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                         ),
@@ -92,7 +94,9 @@ class LetsTalk extends StatelessWidget {
                       Text(
                         'Interested',
                         style: TextStyle(
-                            fontSize: 80,
+                            fontSize: (MediaQuery.of(context).size.width > 576)
+                                ? 80
+                                : 54,
                             fontWeight: FontWeight.w700,
                             color: globals.mainColor,
                             height: 0.3),
@@ -100,58 +104,117 @@ class LetsTalk extends StatelessWidget {
                       Text(
                         'to work with me?',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: (MediaQuery.of(context).size.width > 576)
+                              ? 26
+                              : 18,
                           fontWeight: FontWeight.w300,
                           color: globals.mainColor,
                         ),
                       ),
                       const SizedBox(height: 14),
-                      const Text(
-                        'Currently I\'m looking for full time UI UX job.\nIf you\'re interested, feel free to contact me.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w300,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                      (MediaQuery.of(context).size.width > 576)
+                          ? const Text(
+                              'Currently I\'m looking for full time UI UX job.\nIf you\'re interested, feel free to contact me.',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              textAlign: TextAlign.center,
+                            )
+                          : Container(
+                              width: MediaQuery.of(context).size.width,
+                              padding:
+                                  const EdgeInsets.only(left: 30, right: 30),
+                              child: const Text(
+                                'Currently I\'m looking for full time UI UX job. If you\'re interested, feel free to contact me.',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                       const SizedBox(height: 10),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Don\'t forget to ',
-                          style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w300,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'drop me a line',
-                              style: const TextStyle(
-                                decoration: TextDecoration.underline,
+                      (MediaQuery.of(context).size.width > 576)
+                          ? RichText(
+                              text: TextSpan(
+                                text: 'Don\'t forget to ',
+                                style: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'drop me a line',
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        if (!await launch(
+                                            'mailto:thaanup@gmail.com')) {
+                                          throw 'Could not launch url';
+                                        }
+                                      },
+                                  ),
+                                  const TextSpan(text: ' or '),
+                                  TextSpan(
+                                    text: 'download my CV',
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        showCV();
+                                      },
+                                  ),
+                                ],
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  if (!await launch(
-                                      'mailto:thaanup@gmail.com')) {
-                                    throw 'Could not launch url';
-                                  }
-                                },
-                            ),
-                            const TextSpan(text: ' or '),
-                            TextSpan(
-                              text: 'download my CV',
-                              style: const TextStyle(
-                                decoration: TextDecoration.underline,
+                              textAlign: TextAlign.center,
+                            )
+                          : Container(
+                              width: MediaQuery.of(context).size.width,
+                              padding:
+                                  const EdgeInsets.only(left: 30, right: 30),
+                              child: RichText(
+                                text: TextSpan(
+                                  text: 'Don\'t forget to ',
+                                  style: const TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text: 'drop me a line',
+                                      style: const TextStyle(
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          if (!await launch(
+                                              'mailto:thaanup@gmail.com')) {
+                                            throw 'Could not launch url';
+                                          }
+                                        },
+                                    ),
+                                    const TextSpan(text: ' or '),
+                                    TextSpan(
+                                      text: 'download my CV',
+                                      style: const TextStyle(
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          showCV();
+                                        },
+                                    ),
+                                  ],
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  showCV();
-                                },
                             ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
                       const SizedBox(height: 30),
                       Row(
                         children: [

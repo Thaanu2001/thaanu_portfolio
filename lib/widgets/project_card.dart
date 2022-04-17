@@ -17,9 +17,15 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: (MediaQuery.of(context).size.width > 768)
+          ? MediaQuery.of(context).size.width * 0.5
+          : MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: const EdgeInsets.fromLTRB(100, 60, 100, 60),
+      padding: EdgeInsets.fromLTRB(
+          (MediaQuery.of(context).size.width > 576) ? 100 : 50,
+          60,
+          (MediaQuery.of(context).size.width > 576) ? 100 : 50,
+          60),
       color: (isDark) ? mainColor : Colors.white,
       child: Column(
         children: [
@@ -48,7 +54,10 @@ class ProjectCard extends StatelessWidget {
           Text(
             description,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: (MediaQuery.of(context).size.width < 768 &&
+                      MediaQuery.of(context).size.width > 576)
+                  ? 22
+                  : 18,
               fontWeight: FontWeight.w300,
               color: (!isDark) ? Colors.black : Colors.white,
             ),
